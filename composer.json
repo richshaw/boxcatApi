@@ -1,0 +1,10 @@
+{
+    "require": {
+        "slim/slim": "2.*",
+        "vlucas/valitron": "1.*",
+        "entomb/slim-json-api": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"Boxcat": "src/","Middleware": "src/","View": "src/"}
+    }
+}
