@@ -11,6 +11,6 @@ return array(
         'cookies.cipher_mode' => MCRYPT_MODE_CBC,
     ),
   'Mongo' => array(
-        'uri' => 'mongodb://boxcat:boxcat@kahana.mongohq.com:10075/boxcat_alpha',
+        'uri' => 'mongodb://USERNAME:PASSWORD@kahana.mongohq.com:10075/boxcat_alpha',
     ),
 );
