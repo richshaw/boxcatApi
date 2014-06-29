@@ -137,7 +137,10 @@ class Project
         if(!isset($this->id)) {
             //Save new experiment
             $write = $db->insert($this->collection,$doc);
-            $this->id = (string) $write['_id'];
+            $this->setId((string) $write['_id']);
+            $this->setCreated($write['created']->sec);
+            $this->setAccess($write['access']);
+            $this->setArtifact($write['artifact']);
         }
         else {
             //Update existing experiment
@@ -269,7 +272,7 @@ class Project
     * Converts val to string
     * Used with array_walk_recursive($doc['artifact'],array($this, 'toStrVal'))
     */
-    private function toStrVal(&$val) {
+    public function toStrVal(&$val) {
         $val =  strval($val); 
     }
 }

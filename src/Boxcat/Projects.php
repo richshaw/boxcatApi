@@ -27,7 +27,8 @@ class Projects
             $project->setId((string) $doc['_id']);
             $project->setCreated($doc['created']->sec);
             $project->setAccess($doc['access']);
-            $project->setArtifact(array_walk_recursive($doc['artifact'],array($project, 'toStrVal')));
+            array_walk_recursive($doc['artifact'],array($project, 'toStrVal'));
+            $project->setArtifact($doc['artifact']);
 
             $projects[] = $project;
         }

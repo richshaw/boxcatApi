@@ -26,25 +26,22 @@ $app->post('/project', function () use ($app,$db) {
 
     $request = $app->request();
 
-    $params = json_decode($request->getBody(),TRUE);
+    $params = $request->getBody();
 
     $project = new \Boxcat\Project();
 
     $valid = $project->validate($params);
 
     if ($valid === true) {
-        $project->setOwner((string) $params['owner']);
         //Array map converts MongoId's to string
-        $project->setRead(array_map('strval', $params['read']));  
-        $project->setEdit(array_map('strval', $params['edit']));
-        $project->setAccess($params['access']);
+        $project->setAccess((int) $params['access']);
         $project->setArtifact(array_map('strval', $params['artifact']));
 
         $project->save($db);
 
-        $id = $project->getId();
+        $data = $project->toArray();
 
-        $app->render(200,array('data' => array('id' => $id )));
+        $app->render(200,array('data' => $data));
     }
     else {
         $errors = $valid->errors();
@@ -89,7 +86,7 @@ $app->get('/project/:pId',  function ($pId) use ($app,$db) {
 $app->put('/project/:pId',  function ($pId) use ($app,$db) {
 
     $request = $app->request();
-    $params = json_decode($request->getBody(),TRUE);
+    $params = $request->getBody();
 
     $project = new \Boxcat\Project();
 
@@ -99,28 +96,13 @@ $app->put('/project/:pId',  function ($pId) use ($app,$db) {
         $project->setOwner($params['owner']);
     }
 
-    /*
-    if(isset($params['read'])) {
-        $project->setRead($params['read']);
-    }
-
-    if(isset($params['edit'])) {
-        $project->setEdit($params['edit']);
-    }
-    */
-
     if(isset($params['access'])) {
         $project->setAccess($params['access']);   
     }
 
-    /*
-    if(isset($params['artifact'])) {
-        $project->setArtifact($params['artifact']);     
-    }
-    */
     $project->save($db);
 
-    $data = $project->getId();
+    $data = $project->toArray();
     $app->render(200,array('data' => $data));
 
 
@@ -161,7 +143,7 @@ $app->post('/project/:pId/artifact', function ($pId) use ($app,$db) {
 
     $request = $app->request();
 
-    $params = json_decode($request->getBody(),TRUE);
+    $params = $request->getBody();
 
     $artifact = new \Boxcat\Artifact();
 
@@ -181,7 +163,9 @@ $app->post('/project/:pId/artifact', function ($pId) use ($app,$db) {
 
         $project->addArtifact($id,$db);
 
-        $app->render(200,array('data' => array('id' => $id )));
+        $data = $artifact->toArray();
+
+        $app->render(200,array('data' => $data));
     }
     else {
         $errors = $valid->errors();
@@ -276,7 +260,7 @@ $app->post('/artifact', function () use ($app,$db) {
 
     $request = $app->request();
 
-    $params = json_decode($request->getBody(),TRUE);
+    $params = $request->getBody();
 
     $artifact = new \Boxcat\Artifact();
 
