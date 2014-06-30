@@ -175,7 +175,8 @@ class Artifact
         //Delete temporary file
         unlink($path);
 
-        $this->id = (string) $write;
+        //Load new values
+        $this->load((string) $write,$db);
 
         return true;
     }
