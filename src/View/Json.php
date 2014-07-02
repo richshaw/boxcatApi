@@ -44,7 +44,7 @@ class Json extends \JsonApiView  {
             $json_response = json_encode($response);
         }
 
-        $app->response()->status($status);
+        $app->response()->setStatus($status);
 
         $app->response()->header('Content-Type', 'application/json');
 

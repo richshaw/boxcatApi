@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'JWT' => $vendorDir . '/firebase/php-jwt/Firebase/PHP-JWT/Authentication/JWT.php',
     'JsonApiMiddleware' => $vendorDir . '/entomb/slim-json-api/jsonAPI/JsonApiMiddleware.php',
     'JsonApiView' => $vendorDir . '/entomb/slim-json-api/jsonAPI/JsonApiView.php',
 );

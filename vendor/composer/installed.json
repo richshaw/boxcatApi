@@ -1,53 +1,5 @@
 [
     {
-        "name": "entomb/slim-json-api",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/entomb/slim-json-api.git",
-            "reference": "a36e702b5424098f777eed1f7e1465826097084c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/entomb/slim-json-api/zipball/a36e702b5424098f777eed1f7e1465826097084c",
-            "reference": "a36e702b5424098f777eed1f7e1465826097084c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2014-04-27 22:19:48",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "classmap": [
-                "jsonAPI/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL 3.0"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Tavares",
-                "email": "the.entomb@gmail.com",
-                "homepage": "https://github.com/entomb",
-                "role": "Developer"
-            }
-        ],
-        "description": "Slim extension to implement fast JSON API's",
-        "homepage": "https://github.com/entomb/slim-json-api",
-        "keywords": [
-            "api",
-            "json",
-            "middleware",
-            "slim",
-            "view"
-        ]
-    },
-    {
         "name": "slim/slim",
         "version": "2.4.3",
         "version_normalized": "2.4.3.0",
@@ -139,6 +91,100 @@
             "valid",
             "validation",
             "validator"
+        ]
+    },
+    {
+        "name": "firebase/php-jwt",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Firebase/PHP-JWT",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/firebase/php-jwt.git",
+            "reference": "fa7e362eeeec5ee808124626c3f1a612aadbce52"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/firebase/php-jwt/zipball/fa7e362eeeec5ee808124626c3f1a612aadbce52",
+            "reference": "fa7e362eeeec5ee808124626c3f1a612aadbce52",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "time": "2014-06-25 21:20:33",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "Authentication/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Neuman Vong",
+                "email": "neuman+pear@twilio.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Anant Narayanan",
+                "email": "anant@php.net",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+        "homepage": "https://github.com/firebase/php-jwt"
+    },
+    {
+        "name": "entomb/slim-json-api",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/entomb/slim-json-api.git",
+            "reference": "a21c1ffcf429b5a23052c3ca527d0e553bcb8853"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/entomb/slim-json-api/zipball/a21c1ffcf429b5a23052c3ca527d0e553bcb8853",
+            "reference": "a21c1ffcf429b5a23052c3ca527d0e553bcb8853",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2014-06-30 10:49:22",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "jsonAPI/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL 3.0"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Tavares",
+                "email": "the.entomb@gmail.com",
+                "homepage": "https://github.com/entomb",
+                "role": "Developer"
+            }
+        ],
+        "description": "Slim extension to implement fast JSON API's",
+        "homepage": "https://github.com/entomb/slim-json-api",
+        "keywords": [
+            "api",
+            "json",
+            "middleware",
+            "slim",
+            "view"
         ]
     }
 ]

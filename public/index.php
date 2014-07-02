@@ -3,6 +3,7 @@ require '../bootstrap.php';
 
 $config = require '../config/global.php';
 $db = new \Boxcat\Database($config['Mongo']['uri']);
+
 $app = new \Slim\Slim($config['Slim']);
 $app->add(new \Middleware\Auth());
 $app->view(new \View\Json());
@@ -12,6 +13,25 @@ $app->add(new \Slim\Middleware\ContentTypes());
 $app->get('/', function () use ($app) {
     $app->render(200,array('message' => "Boxcat is **ONLINE** meow"));
 });
+
+
+/****
+* User routes
+*/
+$app->options('/user', function () use ($app) {
+    $app->render(200);
+});
+
+$app->post('/user', function () use ($app,$db) {
+
+    $request = $app->request();
+
+    $params = $request->getBody();
+
+    $app->render(200,array($params));
+
+});
+
 
 
 /****

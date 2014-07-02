@@ -68,6 +68,57 @@ class JsonMiddleware extends \JsonApiMiddleware {
             }
         });
 
+        //Check auth before routing
+        $app->hook('slim.before.router', function () use ($app) {
+    
+            //get authorisation header - this works for Apache, but you may have to customise this if you are using another platform.  If you are using a framework like Zend or Symfony, it might have inbuilt methods for getting hold of the headers, e.g. $request->getHeader('Authorization') for Zend
+            $authorizationHeader = $app->request->headers->get('Authorization');
+
+            //No auth 
+            if(!isset($authorizationHeader)) {
+                $app->render(401,array(
+                    'error' => TRUE,
+                    'msg'   => 'Unauthorized',
+                ));
+            }
+
+
+            //Check auth
+            if(isset($authorizationHeader)) {
+                // validate the token
+                $token = str_replace('Bearer ', '', $authorizationHeader);
+                $secret = "DlMhBLdO4Qt9hIQ4lyHrEuqcrVrvQL_00OX4ekZM3BxbxDEubOPUsNW-_9dLalCO";
+
+                //Attmpt JWT decode
+                try {
+                    $decoded_token = \JWT::decode($token, base64_decode(strtr($secret, '-_', '+/')) );
+                } catch (Exception $e) {
+                    
+                    $app->render(401,array(
+                        'error' => TRUE,
+                        'msg'   => 'Unauthorized',
+                    ));
+
+                }
+                
+                // validate that this token was made for us
+                if ($decoded_token->aud != "ePe1RLcew10DOzkZFB728pTEigpCCExb") {
+                    $app->render(401,array(
+                        'error' => TRUE,
+                        'msg'   => 'Unauthorized',
+                    ));
+                }
+            }
+
+        });
+
+    }
+
+    /**
+     * Call next with added auth
+     */
+    function call(){
+        return $this->next->call();
     }
 
 }
